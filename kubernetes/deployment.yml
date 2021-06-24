@@ -1,36 +1,18 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  labels:
-    run: nodeapp
   name: nodeapp
+  namespace: default
 spec:
-  replicas: 2
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
   selector:
-    matchLabels:
-      run: nodeapp
+    run: nodeapp
   template:
-    metadata:
-      labels:
-        run: nodeapp
     spec:
       containers:
-      - image: gcr.io/$PROJECT_ID/nodeapp:latest
-        name: nodeapp
-        ports:
-        - containerPort: 3000
-
-
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: nodeapp
-spec:
-  selector:
-     run: nodeapp
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 3000
+      - image: gcr.io/practise-317714/helloworld:32066d133d4a4ff1e830f423264c5e069127fdcf
+        name: helloworld
   type: LoadBalancer
