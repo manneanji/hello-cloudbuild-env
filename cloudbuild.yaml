@@ -25,7 +25,8 @@ steps:
     volumes:
       - name: 'kube'
         path: /kube
-
+  
+  #
   # Recursively apply the configuration files under the kubernetes
   # directory.
   - name: 'gcr.io/cloud-builders/gcloud'
