@@ -25,7 +25,8 @@ steps:
     volumes:
       - name: 'kube'
         path: /kube
-
+  
+  #
   # Recursively apply the configuration files under the kubernetes
   # directory.
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -35,7 +36,8 @@ steps:
     args:
       - '-c'
       - |
-        kubectl apply --recursive -f kubernetes
+        kubectl apply --recursive -f kubernetes/deployments/deployment.yaml
+        kubectl apply --recursive -f kubernetes/services/helloworld.yaml
     volumes:
       - name: 'kube'
         path: /kube
