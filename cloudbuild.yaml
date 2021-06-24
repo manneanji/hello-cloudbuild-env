@@ -36,8 +36,8 @@ steps:
     args:
       - '-c'
       - |
-        kubectl apply --recursive -f kubernetes/deployments/deployment.yaml
-        kubectl apply --recursive -f kubernetes/services/helloworld.yaml
+        kubectl apply -f kubernetes/deployments/deployment.yaml
+        kubectl apply -f kubernetes/services/helloworld.yaml
     volumes:
       - name: 'kube'
         path: /kube
